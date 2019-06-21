@@ -1,0 +1,116 @@
+# TODO change this readme to be about the KIO journal
+
+LaTeX2e style for the Computer Tools in Education journal
+
+This directory contains macros and some documentation for typesetting
+papers for submission to the Condensed Matter Physics journal published
+by the Institute for Condensed Matter Physics of the National Academy
+of Sciences of Ukraine.
+
+Files in this directory are:
+
+  cmpj2.sty           Condensed Matter Physics journal style file
+  cmpj.sty            Old version of the Condensed Matter Physics journal style file
+
+  cmp-logo.eps        EPS and PDF versions of the CMP logo required
+  cmp-logo.pdf        by cmpj.sty and cmpj2.sty
+
+  cmpj.bst            BibTeX style file for Condensed Matter Physics (experimental)
+
+  README              This file
+
+  userguide/*         user guide and template for preparing articles for
+                      publishing in the Condensed Matter Physics journal
+
+INSTALLATION
+
+1. Download the file
+
+   http://mirror.ctan.org/macros/latex/contrib/cmpj.zip
+
+2. Unpack the archive in some directory.
+
+3. Move files to a directories on your LaTeX input path. Recommended TDS
+   location, for modern freeware installations of LaTeX, is
+   <local texmf tree>/tex/latex/cmpj/ for
+      cmpj2.sty
+      cmpj.sty
+      cmp-logo.eps
+      cmp-logo.pdf
+   files, <local texmf tree>/bibtex/bst/cmpj/ for
+      cmpj.bst
+   file, and <local texmf tree>/doc/latex/cmpj/ for
+      template.tex
+      template.pdf
+      eps_demo.eps
+      eps_demo.pdf
+      icmphome.eps
+      icmphome.pdf
+      README
+    files.
+
+4. Update the file hash tables (also known as the file name database).
+
+   On teTeX and TeX Live systems, run texhash as root ('sudo texhash').
+   On MiKTeX, run 'initexmf --update-fndb' in a command window or use 
+   the 'Refresh FNDB' button of the MiKTeX Options window.
+
+ADDITIONAL FILES REQUIRED BY THIS PACKAGE
+
+cmpj.sty and cmpj2.sty require the 'doi', 'fancyhdr', 'graphicx',
+'hyperref', 'ifthen', 'url', and 'natbib' packages.
+These packages are included in the current LaTeX distributions. 
+They are also available at CTAN (http://www.ctan.org/).
+Besides, cmpj2.sty supports the 'droid' fonts for text 
+and 'fourier' and 'txfonts' for math.
+
+USER GUIDE AND TEMPLATE
+
+User-level documentation/template is available as template.tex and 
+template.pdf in the doc/latex/cmpj subdirectory.
+
+LICENSE
+
+This package can be redistributed and/or modified under the terms of 
+the LaTeX Project Public License (lppl).
+
+CHANGES
+
+RELEASE NOTES FOR VERSION 2.05:
+
+* Corrected equation numbering in the appendixes.
+
+* Added option 'nocopyright'.
+
+* Updated user guide and template.
+
+RELEASE NOTES FOR VERSION 2.03:
+
+* Added support of the \url and \arxiv commands. 
+
+* Some minor changes in the cmpj2.sty code.
+
+* Updated user guide and template.
+
+RELEASE NOTES FOR VERSION 2.01:
+
+* Added new cmpj2.sty with the support of the 'droid' fonts for text 
+  and 'fourier' fonts and 'txfonts' for math.
+
+* Updated user guide and template.
+
+RELEASE NOTES FOR VERSION 1.17:
+
+* Corrected text height value from \textheight=227mm
+  to \textheight=646pt    % = 227.0430331mm
+
+* Changed definition of the \Real and \Img commands.
+
+* Updated user guide and template.
+
+RELEASE NOTES FOR VERSION 1.15:
+
+* First release uploaded to CTAN.
+
+Andrij Shvaika
+for CMP journal

@@ -1,0 +1,160 @@
+% Пример статьи для журнала КИО
+\documentclass[intlimits,twoside,a4paper,11pt]{article}
+
+% текст статьи рекомендуется писать в кодировке utf-8
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+
+% Подключение пакета с шаблоном журнала.
+% Необзятальная опция eqsecnum указывает, что в каждом разделе формулы нумеруются заново.
+\usepackage[eqsecnum]{kioj}
+
+% Здесь можно подключить свои пакеты
+% \usepackage[•]{•}
+\usepackage{array}
+
+% Указываем номер страницы, с которой начинается статья, можно не указывать, будет нумероваться с первой.
+\setcounter{page}{42}
+
+%рубрика в журнале, обычно не известна при подаче статьи, поэтому не указываем
+\journalsectionnoimage{}
+%\journalsection{informatics}
+%\journalsection{information-systems}
+%\journalsection{software-engineering}
+%\journalsection{computer-in-education}
+%\journalsection{popular-science-articles}
+%\journalsection{programming-practice}
+%\journalsection{editorial-column}
+%\journalsection{specialists-training-new-teaching-methods}
+%\journalsection{specialists-training-training-programs}
+%\journalsection{specialists-training-professional-standards}
+%\journalsection{empty}
+
+%указывам год, номер выпуска неизвестен, поэтмоу ставим прочерк, указываем edu, что означает журнал "компьютерные инструменты в образовании".
+\issue{2015}{-}{edu}
+% Указываем УДК для статьи
+\udknumber{621.320}
+
+%Указываем название статьи заглавными буквами, перед этим указываем сокращенное название статьи для использования в колонтитуле. Сокращенное название пишется в обычном регистре. Сокращенное название - это полное название, которое нужно обрезать по одному из слов и поставить многоточие. Например, полное название "Очень длинное название статьи" нужно заменить на "Очень длинное название...". Часто полное название помещается в колонтул без изменений, в этом случае сокращенное название может совпадать с полным, только написать его надо в обычном регистре.
+\title[Название статьи]{НАЗВАНИЕ СТАТЬИ}
+
+%Информация об авторах. Каждый автор указывается отдельно с помощью трех инструкций \authorI, \authorIemail, \authorIemail. Номера авторов могут быть I, II, III, IV.
+
+\authorI[Андреев А.~А.]{Андреев Андрей Андреевич}
+\authorIaddr{звания, должность, организация}
+\authorIemail{aaa@org.com}
+
+\authorII[Борисов Б.~Б.]{Борисов Борис Борисович}
+\authorIIaddr{д.ф.н., профессор кафедры философии ?ГУ,}
+\authorIIemail{bbb@org.com}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Здесь пишется аннотация, на русском.
+Здесь пишется аннотация, на русском.
+Здесь пишется аннотация, на русском.
+Здесь пишется аннотация, на русском.
+Здесь пишется аннотация, на русском.
+Здесь пишется аннотация, на русском.
+Здесь пишется аннотация, на русском.
+Здесь пишется аннотация, на русском.
+\keywords здесь перечисляются ключевые слова, через запятую, все слова с маленькой буквы.
+\end{abstract}
+
+\section{ВВЕДЕНИЕ}
+Заголовки всех разделов пишутся заглавными буквами. Подразделы и меньше~--- в обычном регистре.
+
+\section{ПЕРВЫЙ РАЗДЕЛ}
+Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела.
+\begin{itemize}
+\item Пример перечисления.
+\item Второй пункт.
+\item Третий пункт.
+\end{itemize}
+
+Теперь пример нумерованного списка.
+\begin{enumerate}
+\item Первый пункт;
+\item Второй пункт;
+\item Третий пункт.
+\end{enumerate}
+Ссылка на рис.~\ref{fig-example}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.4\textwidth]{xkcd1301.png}
+\caption{Достоверность информации в зависимости от расширения файла} \label{fig-example}
+\end{figure}
+
+%Пример таблицы. [H] означает, что таблица должна быть ровно здесь и никуда не перемещаться.
+\begin{table}[H]
+\centering
+\caption{Пример таблицы}
+\label{table-example}
+\small
+\begin{tabular}{|p{5cm}|c|}
+	\hline
+	\centering
+	Вопрос & ? \\
+	\hline
+	Ответ & 42 \\
+	\hline
+\end{tabular}
+\end{table}
+
+\subsection{Подраздел}
+Текст в подразделе
+\subsubsection{Подподраздел}
+%Текст в подподразделе с примером рисунка, состоящего из двух других рисунков. Мы можем ссылаться либо на рисунок полностью, например,~\ref{fig-example-2}, либо на подрисунки, например,~\ref{fig-example-2b}.
+
+%Далее пример двух изображений рядом на одном рисунке
+%Чтобы это работало, в начале файла нужно подключить пакет subcaption:
+%\usepackage{subcaption}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[t]{70mm} %указываем размер подрисунка, без буквы [t] картинки будут вертикально отцентрованы
+		\includegraphics[width=\textwidth]{xkcd1301.png} %width=\textwidth указывает, что ширина совпадает с шириной подрисунка
+		\subcaption{Необязательный подзаголовок}
+		\label{fig-example-2a}
+	\end{subfigure}
+	\quad %это широкий пробел между двумя рисунками
+	\begin{subfigure}[t]{50mm}
+		\includegraphics[width=\textwidth]{xkcd1301.png}
+		\subcaption{} % Здесь подзаголовок не указан
+		\label{fig-example-2b}
+	\end{subfigure}
+	\caption{Пример двух изображений рядом на одном рисунке} \label{fig-example-2}
+\end{figure}
+
+\section{ЗАКЛЮЧЕНИЕ}
+Текст заключения с примером ссылки на литературу:~\cite{lib-1,lib-2}
+
+%Оформляем литературу, 9 означает, что у нас не более 9 пунктов в списке, т.е. все номера состоят из не более, чем одной цифры. Если пунктов много, т.е. номера могут быть двузначными, пишем 99.
+\begin{thebibliography}{9}
+\bibitem{lib-1} {\it Madhav S.} Game Programming Algorithms and Techniques: A Platform-Agnostic Approach (Game Design). UK, 2013. 
+\bibitem{lib-2} {\it Ericson C.} Real-Time Collision Detection. USA, 2004.
+\end{thebibliography}
+
+%указываем, что теперь начинается английская часть
+\translatedpart
+
+%указываем название и авторов на английском
+\title{English title}
+\author{Andreev A.~A., Borisov B.~B.}
+
+%даем команду на печать английского заголовка
+\maketranslatedtitle
+
+\begin{abstract}
+English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
+\keywords keywords, separated by comma, in lower case.
+\end{abstract}
+
+%Завершаем статью печатью информации об авторах.
+\makekioauthors
+
+\end{document}
