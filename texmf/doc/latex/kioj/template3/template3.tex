@@ -52,143 +52,148 @@
 \authorIIpos{д.ф.н., профессор кафедры философии ?ГУ,}
 \authorIIemail{bbb@org.com}
 
-\affiliation{1}{СПбГУ}
-\affiliation{2}{СПбЭТУ}
+\affiliation{1}{СПбГУ, полное наименование организации, адрес, город, индекс, страна}
+\affiliation{2}{СПбЭТУ, полное наименование организации, адрес, город, индекс, страна}
 
 \begin{document}
-\maketitle
+    \maketitle
 
-\begin{abstract}
-Здесь пишется аннотация, на русском.
-Здесь пишется аннотация, на русском.
-Здесь пишется аннотация, на русском.
-Здесь пишется аннотация, на русском.
-Здесь пишется аннотация, на русском.
-Здесь пишется аннотация, на русском.
-Здесь пишется аннотация, на русском.
-Здесь пишется аннотация, на русском.
-\keywords здесь перечисляются ключевые слова, через запятую, все слова с маленькой буквы.
-%Команда \autocitationexample автоматически генерирует пример цитирования статьи, либо можно самостоятельно написать цитирование с помощью команды \citationexample
-\autocitationexample
-%\citationexample Андреев А.~А., Борисов Б.~Б. Шаблон статьи для журнала КИО. Нигде не опубликовано
-\acknowledgements Здесь можно вставить благодарности и ссылки на гранты.
-\end{abstract}
+    \begin{abstract}
+        Здесь пишется аннотация, на русском.
+        Здесь пишется аннотация, на русском.
+        Здесь пишется аннотация, на русском.
+        Здесь пишется аннотация, на русском.
+        Здесь пишется аннотация, на русском.
+        Здесь пишется аннотация, на русском.
+        Здесь пишется аннотация, на русском.
+        Здесь пишется аннотация, на русском.
+        \keywords здесь перечисляются ключевые слова, через запятую, все слова с маленькой буквы.
+        %Команда \autocitationexample автоматически генерирует пример цитирования статьи, либо можно самостоятельно написать цитирование с помощью команды \citationexample
+        \autocitationexample
+        %\citationexample Андреев А.~А., Борисов Б.~Б. Шаблон статьи для журнала КИО. Нигде не опубликовано
+        \acknowledgements Здесь можно вставить благодарности и ссылки на гранты.
+    \end{abstract}
 
-\section{ВВЕДЕНИЕ}
-Заголовки всех разделов пишутся заглавными буквами. Подразделы и меньше~--- в обычном регистре.
+    \section{ВВЕДЕНИЕ}
+    Заголовки всех разделов пишутся заглавными буквами. Подразделы и меньше~--- в обычном регистре.
 
-\section{ПЕРВЫЙ РАЗДЕЛ}
-Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела.
-\begin{itemize}
-\item Пример перечисления.
-\item Второй пункт.
-\item Третий пункт.
-\end{itemize}
+    \section{ПЕРВЫЙ РАЗДЕЛ}
+    Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела. Пример текста раздела.
+    \begin{itemize}
+        \item Пример перечисления.
+        \item Второй пункт.
+        \item Третий пункт.
+    \end{itemize}
 
-Теперь пример нумерованного списка.
-\begin{enumerate}
-\item Первый пункт;
-\item Второй пункт;
-\item Третий пункт.
-\end{enumerate}
-Ссылка на рис.~\ref{fig-example}
+    Теперь пример нумерованного списка.
+    \begin{enumerate}
+        \item Первый пункт;
+        \item Второй пункт;
+        \item Третий пункт.
+    \end{enumerate}
+    Ссылка на рис.~\ref{fig-example}
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.4\textwidth]{xkcd1301.png}
-\caption{Достоверность информации в зависимости от расширения файла} \label{fig-example}
-\end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.4\textwidth]{xkcd1301.png}
+        \caption{Достоверность информации в зависимости от расширения файла} \label{fig-example}
+    \end{figure}
 
-%Пример таблицы. [H] означает, что таблица должна быть ровно здесь и никуда не перемещаться.
-\begin{table}[H]
-\centering
-\caption{Пример таблицы}
-\label{table-example}
-\small
-\begin{tabular}{|p{5cm}|c|}
-	\hline
-	\centering
-	Вопрос & ? \\
-	\hline
-	Ответ & 42 \\
-	\hline
-\end{tabular}
-\end{table}
+    %Пример таблицы. [H] означает, что таблица должна быть ровно здесь и никуда не перемещаться.
+    \begin{table}[H]
+        \centering
+        \caption{Пример таблицы}
+        \label{table-example}
+        \small
+        \begin{tabular}{|p{5cm}|c|}
+            \hline
+            \centering
+            Вопрос & ? \\
+            \hline
+            Ответ & 42 \\
+            \hline
+        \end{tabular}
+    \end{table}
 
-\subsection{Подраздел}
-\label{sec:sub} %ссылка на раздел
-Текст в подразделе
+    \subsection{Подраздел}
+    \label{sec:sub} %ссылка на раздел
+    Текст в подразделе
 
-\subsubsection{Подподраздел}
-Сначала, ссылка на\ref{sec:sub}.
-%Текст в подподразделе с примером рисунка, состоящего из двух других рисунков. Мы можем ссылаться либо на рисунок полностью, например,~\ref{fig-example-2}, либо на подрисунки, например,~\ref{fig-example-2b}.
+    \subsubsection{Подподраздел}
+    Сначала, ссылка на\ref{sec:sub}.
+    %Текст в подподразделе с примером рисунка, состоящего из двух других рисунков. Мы можем ссылаться либо на рисунок полностью, например,~\ref{fig-example-2}, либо на подрисунки, например,~\ref{fig-example-2b}.
 
-%Далее пример двух изображений рядом на одном рисунке
-%Чтобы это работало, в начале файла нужно подключить пакет subcaption:
-%\usepackage{subcaption}
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[t]{70mm} %указываем размер подрисунка, без буквы [t] картинки будут вертикально отцентрованы
-		\includegraphics[width=\textwidth]{xkcd1301.png} %width=\textwidth указывает, что ширина совпадает с шириной подрисунка
-		\subcaption{Необязательный подзаголовок}
-		\label{fig-example-2a}
-	\end{subfigure}
-	\quad %это широкий пробел между двумя рисунками
-	\begin{subfigure}[t]{50mm}
-		\includegraphics[width=\textwidth]{xkcd1301.png}
-		\subcaption{} % Здесь подзаголовок не указан
-		\label{fig-example-2b}
-	\end{subfigure}
-	\caption{Пример двух изображений рядом на одном рисунке} \label{fig-example-2}
-\end{figure}
+    %Далее пример двух изображений рядом на одном рисунке
+    %Чтобы это работало, в начале файла нужно подключить пакет subcaption:
+    %\usepackage{subcaption}
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[t]{70mm} %указываем размер подрисунка, без буквы [t] картинки будут вертикально отцентрованы
+            \includegraphics[width=\textwidth]{xkcd1301.png} %width=\textwidth указывает, что ширина совпадает с шириной подрисунка
+            \subcaption{Необязательный подзаголовок}
+            \label{fig-example-2a}
+        \end{subfigure}
+        \quad %это широкий пробел между двумя рисунками
+        \begin{subfigure}[t]{50mm}
+            \includegraphics[width=\textwidth]{xkcd1301.png}
+            \subcaption{} % Здесь подзаголовок не указан
+            \label{fig-example-2b}
+        \end{subfigure}
+        \caption{Пример двух изображений рядом на одном рисунке} \label{fig-example-2}
+    \end{figure}
 
-\section{ЗАКЛЮЧЕНИЕ}
-Текст заключения с примером ссылки на литературу:~\cite{lib-1,lib-2}
+    \section{ЗАКЛЮЧЕНИЕ}
+    Текст заключения с примером ссылки на литературу:~\cite{lib-1,lib-2}
 
-%Оформляем литературу, 9 означает, что у нас не более 9 пунктов в списке, т.е. все номера состоят из не более, чем одной цифры. Если пунктов много, т.е. номера могут быть двузначными, пишем 99.
-\begin{thebibliography}{9}
-\bibitem{lib-1} {\it Madhav S.} Game Programming Algorithms and Techniques: A Platform-Agnostic Approach (Game Design). UK, 2013. 
-\bibitem{lib-2} {\it Ericson C.} Real-Time Collision Detection. USA, 2004.
-\end{thebibliography}
+    %Оформляем литературу, 9 означает, что у нас не более 9 пунктов в списке, т.е. все номера состоят из не более, чем одной цифры. Если пунктов много, т.е. номера могут быть двузначными, пишем 99.
+    \begin{thebibliography}{9}
+        \bibitem{lib-1} {\it Madhav S.} Game Programming Algorithms and Techniques: A Platform-Agnostic Approach (Game Design). UK, 2013.
+        \bibitem{lib-2} {\it Ericson C.} Real-Time Collision Detection. USA, 2004.
+    \end{thebibliography}
 
-%дополнительная информация о статье
-\additionalinfo{ГРНТИ 00000}
-\additionalinfo{Поступила в редакцию 2 января 2014, окончательный вариант 24 января 2016 г.}
+    %дополнительная информация о статье
+    \additionalinfo{ГРНТИ 00000}
+    \additionalinfo{Поступила в редакцию 2 января 2014, окончательный вариант 24 января 2016 г.}
 
-%указываем, что теперь начинается английская часть
+    %указываем, что теперь начинается английская часть
 
-\begin{translatedpart}
-%указываем название и авторов на английском
-\title{English title}
-\authorI[Andreev A.~A.\affil{1,2}]{Andreev Andrey Andreevich}
-\authorIpos{position position position position position,
-institution institution institution institution institution}
+    \begin{translatedpart}
+        %указываем название и авторов на английском
+        \title{English title}
+        \authorI[Andreev A.~A.\affil{1,2}]{Andreev Andrey Andreevich}
+        \authorIpos{position position position position position,
+        institution institution institution institution institution}
 
-\authorII[Borisov B.~B.\affil{2}]{Borisov Boris Borisovich}
-\authorIIpos{just a cool guy with some position at some institution}
+        \authorII[Borisov B.~B.\affil{2}]{Borisov Boris Borisovich}
+        \authorIIpos{just a cool guy with some position at some institution}
 
-\affiliation{1}{SPbSU}
-\affiliation{2}{SPbETU}
+        \affiliation{1}{SPbSU}
+        \affiliation{2}{SPbETU}
 
-%даем команду на печать английского заголовка
-\maketranslatedtitle
+        %даем команду на печать английского заголовка
+        \maketranslatedtitle
 
-\begin{abstract}
-English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
-English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
+        \begin{abstract}
+            English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
+            English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
 
-English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
-English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
-\keywords keywords, separated by comma, in lower case.
-\autocitationexample
-%\citationexample ???
-\acknowledgements here we may thank everybody who helped authors with this paper, and name grants that supported the research and the paper.
-\end{abstract}
+            English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
+            English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
+            \keywords keywords, separated by comma, in lower case.
+            \autocitationexample
+            %\citationexample ???
+            \acknowledgements here we may thank everybody who helped authors with this paper, and name grants that supported the research and the paper.
+        \end{abstract}
 
-\additionalinfo{Received October 7, 2001, The final version: December 28, 2015}
+        \begin{thebibliography}{9}
+            \bibitem{en-lib-1} {\it Madhav S.} Game Programming Algorithms and Techniques: A Platform-Agnostic Approach (Game Design). UK, 2013.
+            \bibitem{en-lib-2} {\it Ericson C.} Real-Time Collision Detection. USA, 2004.
+        \end{thebibliography}
 
-\end{translatedpart}
+        \additionalinfo{Received October 7, 2001, The final version: December 28, 2015}
 
-% Здесь больше ничего не должно быть написано
+    \end{translatedpart}
+
+    % Здесь больше ничего не должно быть написано
 
 \end{document}

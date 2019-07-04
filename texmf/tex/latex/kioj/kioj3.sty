@@ -28,7 +28,9 @@
 % 2. Полное наименование организации, адрес, город, индекс, страна
 % Цифры 1 и 2 - это верхние индексы, как у нас и было. Если автор один, индекс также нужен.
 %
-% В английской части добавляется Reference. Информация об авторах в английской части и в конце убирается (наши авторы).
+% TODO В английской части добавляется Reference.
+% TODO разобраться в конфликте, какой пакет добавляет \iint (это txfont, не надо ли его обновить до заменяющего пакета)
+% TODO можно ли убрать линии перед переведенной частью, если она начинается в начале страницы
 
 \ProvidesPackage{kioj3}[2016/07/28 v0.2 The KIO journal package]
 \def\filename{kioj3.sty}
@@ -277,6 +279,7 @@
   \global\let\maketitle\relax
   \global\let\@thanks\@empty
   \firstpage
+  \renewcommand\refname{\@langrev{Список литературы}{References}} % TODO почему нельзя написать это вместе с другими \@langrev?
 }
 
 \def\@title{}
@@ -634,11 +637,8 @@
 %%
 %%
 %http://tex.stackexchange.com/questions/173304/can-newpage-take-an-argument-like-pagebreak
-\newcounter{pagebeforetranslation}
-\setcounter{pagebeforetranslation}{\value{page}}
 \vspace{0pt plus \textheight}\pagebreak[3]\vspace{0pt plus -\textheight}
 %TODO don't draw ruler if after page break
-\ifthenelse{\equal{\value{page}}{\value{pagebeforetranslation}}}{\message{EQUAL}}{\message{NON-EQUAL}}
 \vskip 1cm
 \hrule width\headwidth height\headrulewidth
 \vskip 1pt
