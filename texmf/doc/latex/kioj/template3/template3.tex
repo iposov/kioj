@@ -6,16 +6,16 @@
 
 % Подключение пакета с шаблоном журнала.
 % Необзятальная опция eqsecnum указывает, что в каждом разделе формулы нумеруются заново.
-\usepackage[eqsecnum]{kioj3}
+\usepackage[eqsecnum,authorsinfo]{kioj3}
 % Здесь можно подключить свои пакеты. Некоторые пакеты работают только если их подключить перед предыдущей строкой \usepackage[eqsecnum]{kioj3}
 % \usepackage[•]{•}
 \usepackage{array}
 
 % Указываем номер страницы, с которой начинается статья, можно не указывать, будет нумероваться с первой.
-\setcounter{page}{42}
+\setcounter{page}{41}
 
 %рубрика в журнале, обычно не известна при подаче статьи, поэтому не указываем
-\journalsectionnoimage{}
+\journalsectionnoimage{informatics}
 %\journalsection{informatics}
 %\journalsection{information-systems}
 %\journalsection{software-engineering}
@@ -45,11 +45,13 @@
 %\authorIaddr и \affilitaion различаются тем, что первое является кратким расском об авторе, в отличие от второго, где указывается только организация.
 \authorI[Андреев А.~А.\affil{1,2}]{Андреев Андрей Андреевич}
 \authorIpos{звания, должность, организация}
-\authorIemail{aaa@org.com}
+\authorIinfo{информация об авторе}
+\authorIemailEnvelope{aaa@org.com}
 \authorIorcid{orcid.org/0000-0002-0261-3113}
 
 \authorII[Борисов Б.~Б.\affil{2}]{Борисов Борис Борисович}
-\authorIIpos{д.ф.н., профессор кафедры философии ?ГУ,}
+\authorIIpos{д.ф.н., профессор кафедры философии, ?ГУ}
+\authorIIinfo{информация о втором авторе}
 \authorIIemail{bbb@org.com}
 
 \affiliation{1}{СПбГУ, полное наименование организации, адрес, город, индекс, страна}
@@ -120,7 +122,7 @@
     Текст в подразделе
 
     \subsubsection{Подподраздел}
-    Сначала, ссылка на\ref{sec:sub}.
+    Сначала, ссылка на~\ref{sec:sub}.
     %Текст в подподразделе с примером рисунка, состоящего из двух других рисунков. Мы можем ссылаться либо на рисунок полностью, например,~\ref{fig-example-2}, либо на подрисунки, например,~\ref{fig-example-2b}.
 
     %Далее пример двух изображений рядом на одном рисунке
@@ -163,9 +165,11 @@
         \authorI[Andreev A.~A.\affil{1,2}]{Andreev Andrey Andreevich}
         \authorIpos{position position position position position,
         institution institution institution institution institution}
+        \authorIinfo{1st author info}
 
         \authorII[Borisov B.~B.\affil{2}]{Borisov Boris Borisovich}
         \authorIIpos{just a cool guy with some position at some institution}
+        \authorIIinfo{2nd author info}
 
         \affiliation{1}{SPbSU}
         \affiliation{2}{SPbETU}
@@ -177,8 +181,6 @@
             English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
             English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
 
-            English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
-            English abstract goes here. English abstract goes here. English abstract goes here. English abstract goes here.
             \keywords keywords, separated by comma, in lower case.
             \autocitationexample
             %\citationexample ???
@@ -191,9 +193,6 @@
         \end{thebibliography}
 
         \additionalinfo{Received October 7, 2001, The final version: December 28, 2015}
-
     \end{translatedpart}
-
-    % Здесь больше ничего не должно быть написано
 
 \end{document}

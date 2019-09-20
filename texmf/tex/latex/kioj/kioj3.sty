@@ -31,6 +31,7 @@
 % TODO В английской части добавляется Reference.
 % TODO разобраться в конфликте, какой пакет добавляет \iint (это txfont, не надо ли его обновить до заменяющего пакета)
 % TODO можно ли убрать линии перед переведенной частью, если она начинается в начале страницы
+% TODO переписать работу с двумя языками.
 
 \ProvidesPackage{kioj3}[2016/07/28 v0.2 The KIO journal package]
 \def\filename{kioj3.sty}
@@ -105,9 +106,18 @@
 
 \newcommand\@lang[2]{\@ifundefined{@english}{#1}{#2}}
 \newcommand\@langrev[2]{\@ifundefined{@reverse@lang}{\@lang{#1}{#2}}{\@lang{#2}{#1}}}
+\newcommand\@unreverselang[1]{%
+\let\@reverse@lang@temp\@reverse@lang%
+\let\@reverse@lang\undefined%
+#1%
+\let\@reverse@lang\@reverse@lang@temp%
+}
 
 \DeclareOption{english}{
 	\def\@english{}
+}
+\DeclareOption{authorsinfo}{
+    \def\need@authors@info{}
 }
 
 % nocopyright option
@@ -115,7 +125,7 @@
 \def\@@copyright{\copyright}
 \def\copyright@size{\small}
 \def\copyright@author{\@author\cp@issue@year}
-\def\copyright@journal{\copyright\space\MakeTextUppercase{\journal@type}. \textnumero\issue@number, \issue@year \space г.}
+\def\copyright@journal{\@unreverselang{\copyright\space\MakeTextUppercase{\journal@type}. \textnumero\issue@number, \issue@year}\@lang{ \space г.}{}}
 \def\authorcopyright{\@ifnextchar[
         \iauthorcopyright{\iauthorcopyright[\small]}}
 \def\iauthorcopyright[#1]#2{\gdef\copyright@size{#1}
@@ -146,6 +156,7 @@
 \RequirePackage{float}
 \RequirePackage[tableposition=top,labelfont={bf,sf,small},font=small,skip=4mm,labelsep=period]{caption}
 \RequirePackage{subcaption}
+\RequirePackage[misc]{ifsym}
 
 \@lang{
   \renewcommand\thesubfigure{\asbuk{subfigure}}
@@ -241,12 +252,19 @@
 
 \def\authors@short@split@by@comma{\authorI@short\authorI@short@cont}
 
+\def\authorI@short@first@lang@cont{\@ifundefined{authorII@short@first@lang}{}{, \authorII@short@first@lang\authorII@short@first@lang@cont}}
+\def\authorII@short@first@lang@cont{\@ifundefined{authorIII@short@first@lang}{}{, \authorIII@short@first@lang\authorIII@short@first@lang@cont}}
+\def\authorIII@short@first@lang@cont{\@ifundefined{authorIV@short@first@lang}{}{, \authorIV@short@first@lang\authorIV@short@first@lang@cont}}
+\def\authorIV@short@first@lang@cont{\@ifundefined{authorV@short@first@lang}{}{, \authorV@short@first@lang}}
+
+\def\authors@short@first@lang@split@by@comma{\authorI@short@first@lang\authorI@short@first@lang@cont}
+
 %% Authors information
 \def\authors@all@info{%
     \def\authorinfo##1{
         \setstretch{0.9}
         \csname author##1@short\endcsname, \csname author##1@pos\endcsname%
-        \ifcsname author##1@email\endcsname, \href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
+        \ifcsname author##1@email\endcsname, \ifcsname author##1@email@recepient\endcsname\Letter\fi\ \href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
         \ifcsname author##1@orcid\endcsname, \href{http://\csname author##1@orcid\endcsname}{\csname author##1@orcid\endcsname}\fi
     }
     \ifcsname authorI@short\endcsname\authorinfo{I}\par\fi
@@ -285,7 +303,6 @@
 \def\@title{}
 \def\@author{}
 \def\@address{}
-\def\fancy@author{}
 \def\fancy@header@title{FANCY@HEADER@TITLE}
 \def\journal@type{}
 \def\issue@year{????}%
@@ -318,6 +335,7 @@
 \def\bibdoi{\doi}
 \def\arxiv#1{\href{http://arxiv.org/abs/#1}{arXiv:#1}}
 
+%TODO make more modern, use etex primitives for cases
 \def\journalsection#1{%
     \def\journal@section@id{#1}
     \ifthenelse{\equal{informatics}{#1}}{%
@@ -366,7 +384,7 @@
         \renewcommand{\headrule}{}
         \renewcommand{\footrule}{}
     }{%
-        \def\journal@section@name{?? #1}%
+        \def\journal@section@name{\@lang{раздел не указан или неизвестен}{section not specified or unknown} #1}%
     }%
     }%
     }%
@@ -416,7 +434,7 @@
       \@langrev{%no UDC in english
         \@ifundefined{udk@number}{}{\\[0.6ex]\@langrev{УДК}{UDC}:\space\udk@number}%
       }{}
-      \\[0.6ex]\href{http://ipo.spb.ru/journal}{http://ipo.spb.ru/journal}%
+      \\[0.6ex]\href{http://cte.eltech.ru}{http://cte.eltech.ru}%
       \@ifundefined{doi@number}{}{\\[0.6ex]\print@doi}%
     \end{minipage}%
   }
@@ -431,7 +449,7 @@
 }%
 
 \def\@maketitle{%
-%---------------------------- 
+%----------------------------
   \newpage%
   \ifthenelse{\isodd{\pageref{first@page}}}{%
       \noindent\title@full@article@info\hfill\title@section@image%
@@ -453,7 +471,8 @@
   \affiliation@footnotes
   }%
   \par
-  \vskip 1.5em}
+  \vskip 1.5em%
+}
 
 \renewenvironment{abstract}{%
 %%%    \setcounter{page}{\start@page}\label{first@page}
@@ -494,7 +513,7 @@
         \noindent\raggedright\upshape{\hv@sf\bfseries PACS:}\slshape\space}
 
 \def\author{\@dblarg{\make@author}}
-\long\def\make@author[#1]#2{\gdef\fancy@author{#1}\gdef\@author{#2}\gdef\@copyright{\@@copyright}}
+\long\def\make@author[#1]#2{\gdef\@author{#2}\gdef\@copyright{\@@copyright}}
 
 \def\title{\@dblarg{\make@title}}
 \long\def\make@title[#1]#2{\gdef\fancy@title{#1}\gdef\fancy@header@title{#1}\gdef\@title{#2}}
@@ -504,11 +523,11 @@
 \def\authorIII{\@dblarg{\def@authorIII}}
 \def\authorIV{\@dblarg{\def@authorIV}}
 \def\authorV{\@dblarg{\def@authorV}}
-\def\def@authorI[#1]#2{\def\authorI@short{#1}\def\authorI@full{#2}}
-\def\def@authorII[#1]#2{\def\authorII@short{#1}\def\authorII@full{#2}}
-\def\def@authorIII[#1]#2{\def\authorIII@short{#1}\def\authorIII@full{#2}}
-\def\def@authorIV[#1]#2{\def\authorIV@short{#1}\def\authorIV@full{#2}}
-\def\def@authorV[#1]#2{\def\authorV@short{#1}\def\authorV@full{#2}}
+\def\def@authorI[#1]#2{\gdef\authorI@short{#1}\providecommand\authorI@short@first@lang{#1}\gdef\authorI@full{#2}\providecommand\authorI@full@first@lang{#2}}
+\def\def@authorII[#1]#2{\gdef\authorII@short{#1}\providecommand\authorII@short@first@lang{#1}\gdef\authorII@full{#2}\providecommand\authorII@full@first@lang{#2}}
+\def\def@authorIII[#1]#2{\gdef\authorIII@short{#1}\providecommand\authorIII@short@first@lang{#1}\gdef\authorIII@full{#2}\providecommand\authorIII@full@first@lang{#2}}
+\def\def@authorIV[#1]#2{\gdef\authorIV@short{#1}\providecommand\authorIV@short@first@lang{#1}\gdef\authorIV@full{#2}\providecommand\authorIV@full@first@lang{#2}}
+\def\def@authorV[#1]#2{\gdef\authorV@short{#1}\providecommand\authorV@short@first@lang{#1}\gdef\authorV@full{#2}\providecommand\authorV@full@first@lang{#2}}
 
 \def\authorIpos#1{\def\authorI@pos{#1}}
 \def\authorIIpos#1{\def\authorII@pos{#1}}
@@ -516,11 +535,23 @@
 \def\authorIVpos#1{\def\authorIV@pos{#1}}
 \def\authorVpos#1{\def\authorV@pos{#1}}
 
+\def\authorIinfo#1{\gdef\authorI@info{#1}\providecommand\authorI@info@first@lang{#1}}
+\def\authorIIinfo#1{\gdef\authorII@info{#1}\providecommand\authorII@info@first@lang{#1}}
+\def\authorIIIinfo#1{\gdef\authorIII@info{#1}\providecommand\authorIII@info@first@lang{#1}}
+\def\authorIVinfo#1{\gdef\authorIV@info{#1}\providecommand\authorIV@info@first@lang{#1}}
+\def\authorVinfo#1{\gdef\authorV@info{#1}\providecommand\authorV@info@first@lang{#1}}
+
 \def\authorIemail#1{\def\authorI@email{#1}}
 \def\authorIIemail#1{\def\authorII@email{#1}}
 \def\authorIIIemail#1{\def\authorIII@email{#1}}
 \def\authorIVemail#1{\def\authorIV@email{#1}}
 \def\authorVemail#1{\def\authorV@email{#1}}
+
+\def\authorIemailEnvelope#1{\authorIemail{#1}\def\authorI@email@recepient{}}
+\def\authorIIemailEnvelope#1{\authorIIemail{#1}\def\authorII@email@recepient{}}
+\def\authorIIIemailEnvelope#1{\authorIIIemail{#1}\def\authorIII@email@recepient{}}
+\def\authorIVemailEnvelope#1{\authorIVemail{#1}\def\authorIV@email@recepient{}}
+\def\authorVemailEnvelope#1{\authorVemail{#1}\def\authorV@email@recepient{}}
 
 \def\authorIorcid#1{\def\authorI@orcid{#1}}
 \def\authorIIorcid#1{\def\authorII@orcid{#1}}
@@ -568,16 +599,8 @@
 
 \newcommand\maketranslatedtitle{
   \begingroup
-    %\if@twocolumn
-    %  \ifnum \col@number=\@ne
-    %    \@makeukrtitle
-    %  \else
-    %    \twocolumn[\@makeukrtitle]%
-    %  \fi
-    %\else
       \global\@botnum\z@   % Prevents figures from going at bottom of page.
       \@makeukrtitle
-    %\fi
     \@thanks
   \endgroup
   \global\let\affil\relax@with@arg%
@@ -644,7 +667,6 @@
 \vskip 1pt
 \hrule width\headwidth height\headrulewidth
 }{%
-    \lastpage
 }
 
 \newcommand\additionalinfo[1]{
@@ -729,12 +751,16 @@
 
 %----- begin headers footers
 
-\chead[]{}
-\cfoot[]{}
+\def\@curlang{%here we can debug language inside a header
+%\@langrev{*RU*}{*EN*}
+}
 
-\lhead[\fancyplain{}{\small\sf@phv\def\refaddr##1{}\textcolor{rulercolor}{\fancy@author}}]{}
+\chead[\@curlang]{\@curlang}
+\cfoot[\@curlang]{\@curlang}
 
-\rhead[]{\fancyplain{}{\small\sf@phv\textcolor{rulercolor}{\fancy@header@title}}}
+\lhead[\fancyplain{}{\small\sf@phv\def\refaddr##1{}\textcolor{rulercolor}{\mbox\authors@short@first@lang@split@by@comma}}]{}
+
+\rhead[]{\fancyplain{}{\small\sf@phv\textcolor{rulercolor}{\fancy@header@title}}} % \fancy@header@title это всегда название на основном языке
 
 \lfoot[\issue@page@even\normalsize\sf@phv\kio@page]{
    \copyright@size\sf@phv\textcolor{rulercolor}{\journal@section@name}
@@ -768,6 +794,47 @@
 \newcommand\lastpage{\label{last@page}}
 \lefthyphenmin=2
 \righthyphenmin=3
+
+\AtEndDocument{%
+    \@ifundefined{need@authors@info}{\lastpage}{
+        \vspace*{0.5cm plus 1fill}%
+
+        \begin{minipage}[b]{\textwidth}%
+        \sf@phv
+
+        \def\authorlonginfo#1{
+            \setstretch{0.9}
+            \csname author#1@full\endcsname\par%
+            \ifcsname author#1@info\endcsname \csname author#1@info\endcsname\fi\par%
+            \ifcsname author#1@email\endcsname\ifcsname author#1@email@recepient\endcsname\Letter\ \fi\href{mailto:\csname author#1@email\endcsname}{\csname author#1@email\endcsname}\fi
+            \vskip 1mm
+        }
+
+        \def\allauthorslonginfo{
+            \ifcsname authorI@short\endcsname\authorlonginfo{I}\par\fi
+            \ifcsname authorII@short\endcsname\authorlonginfo{II}\par\fi
+            \ifcsname authorIII@short\endcsname\authorlonginfo{III}\par\fi
+            \ifcsname authorIV@short\endcsname\authorlonginfo{IV}\par\fi
+            \ifcsname authorV@short\endcsname\authorlonginfo{V}\par\fi
+        }
+
+        \allauthorslonginfo
+
+        \def\authorlonginfo#1{
+            \setstretch{0.9}
+            \csname author#1@full@first@lang\endcsname\par%
+            \ifcsname author#1@info@first@lang\endcsname \csname author#1@info@first@lang\endcsname\fi\par%
+            \ifcsname author#1@email\endcsname\ifcsname author#1@email@recepient\endcsname\Letter\ \fi\href{mailto:\csname author#1@email\endcsname}{\csname author#1@email\endcsname}\fi
+            \vskip 1mm
+        }
+
+        \vskip 3mm
+        \allauthorslonginfo
+        \lastpage%
+
+        \end{minipage}
+    }
+}
 
 \RequirePackage[T2A]{fontenc} % package 'fourier' sets T1 encoding
 \endinput
