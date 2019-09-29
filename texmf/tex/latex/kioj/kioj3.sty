@@ -418,9 +418,9 @@
 % title
 
 \def\pages@span{%
-\ifthenelse{\equal{\pageref*{first@page}}%
-        {\pageref*{last@page}}}%
-        {\pageref*{last@page}}{\pageref*{first@page}--\pageref*{last@page}}
+\ifthenelse{\equal{\pageref*{first@page}}{\pageref*{last@page}}}%
+        {\pageref*{last@page}}%
+        {\pageref*{first@page}--\pageref*{last@page}}%
 }
 
 \newcommand\print@doi{\href{http://dx.doi.org/\doi@number}{doi:\doi@number}}
@@ -503,10 +503,11 @@
 
 \newcommand\autocitationexample{\citationexample\@langrev{
   \authors@short@split@by@comma\space\fancy@title\space//
-  \journal@type, \issue@year. № \issue@number. С. \pages@span.
+  \journal@type. \issue@year. № \issue@number. С. \pages@span.
+  \@ifundefined{doi@number}{}{\print@doi}
 }{
   \authors@short@split@by@comma. \fancy@title. \journal@type, \issue@year.
-  № \issue@number. P. \pages@span \@ifundefined{doi@number}{}{: DOI: \print@doi@full}.
+  № \issue@number. P. \pages@span. \@ifundefined{doi@number}{}{\print@doi}.
 }}
 
 \newcommand\pacs{\par\vskip 1ex
