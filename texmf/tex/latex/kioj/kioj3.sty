@@ -259,12 +259,14 @@
 
 \def\authors@short@first@lang@split@by@comma{\authorI@short@first@lang\authorI@short@first@lang@cont}
 
+\def\@Letter{{\footnotesize \Letter}}
+
 %% Authors information
 \def\authors@all@info{%
     \def\authorinfo##1{
         \setstretch{0.9}
         \csname author##1@short\endcsname, \csname author##1@pos\endcsname%
-        \ifcsname author##1@email\endcsname, \ifcsname author##1@email@recepient\endcsname\Letter\fi\ \href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
+        \ifcsname author##1@email\endcsname, \ifcsname author##1@email@recepient\endcsname\@Letter\fi\ \href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
         \ifcsname author##1@orcid\endcsname, \href{http://\csname author##1@orcid\endcsname}{\csname author##1@orcid\endcsname}\fi
     }
     \ifcsname authorI@short\endcsname\authorinfo{I}\par\fi
@@ -646,6 +648,7 @@
   \vskip 1.5em}
 
 \newenvironment{translatedpart}{%
+  \print@authors@info%
   \ifx\l@ukrainian\@undefined
   \@nopatterns{Ukrainian}
   \adddialect\l@ukrainian0
@@ -668,6 +671,7 @@
 \vskip 1pt
 \hrule width\headwidth height\headrulewidth
 }{%
+\print@authors@info%
 }
 
 \newcommand\additionalinfo[1]{
@@ -796,46 +800,37 @@
 \lefthyphenmin=2
 \righthyphenmin=3
 
-\AtEndDocument{%
+\def\print@authors@info{
     \@ifundefined{need@authors@info}{\lastpage}{
-        \vspace*{0.5cm plus 1fill}%
-
+        \vspace*{0.5cm}%
+        \noindent
         \begin{minipage}[b]{\textwidth}%
+        \bfseries
         \sf@phv
 
-        \def\authorlonginfo#1{
+        \def\authorlonginfo##1{
             \setstretch{0.9}
-            \csname author#1@full\endcsname\par%
-            \ifcsname author#1@info\endcsname \csname author#1@info\endcsname\fi\par%
-            \ifcsname author#1@email\endcsname\ifcsname author#1@email@recepient\endcsname\Letter\ \fi\href{mailto:\csname author#1@email\endcsname}{\csname author#1@email\endcsname}\fi
-            \vskip 1mm
+            \noindent
+            \csname author##1@full\endcsname,
+            \ifcsname author##1@info\endcsname \csname author##1@info\endcsname\fi,
+            \ifcsname author##1@email\endcsname\ifcsname author##1@email@recepient\endcsname\@Letter\ \fi\href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
         }
 
         \def\allauthorslonginfo{
             \ifcsname authorI@short\endcsname\authorlonginfo{I}\par\fi
-            \ifcsname authorII@short\endcsname\authorlonginfo{II}\par\fi
-            \ifcsname authorIII@short\endcsname\authorlonginfo{III}\par\fi
-            \ifcsname authorIV@short\endcsname\authorlonginfo{IV}\par\fi
-            \ifcsname authorV@short\endcsname\authorlonginfo{V}\par\fi
+            \ifcsname authorII@short\endcsname\vskip 2mm\authorlonginfo{II}\par\fi
+            \ifcsname authorIII@short\endcsname\vskip 2mm\authorlonginfo{III}\par\fi
+            \ifcsname authorIV@short\endcsname\vskip 2mm\authorlonginfo{IV}\par\fi
+            \ifcsname authorV@short\endcsname\vskip 2mm\authorlonginfo{V}\par\fi
         }
 
         \allauthorslonginfo
-
-        \def\authorlonginfo#1{
-            \setstretch{0.9}
-            \csname author#1@full@first@lang\endcsname\par%
-            \ifcsname author#1@info@first@lang\endcsname \csname author#1@info@first@lang\endcsname\fi\par%
-            \ifcsname author#1@email\endcsname\ifcsname author#1@email@recepient\endcsname\Letter\ \fi\href{mailto:\csname author#1@email\endcsname}{\csname author#1@email\endcsname}\fi
-            \vskip 1mm
-        }
-
-        \vskip 3mm
-        \allauthorslonginfo
-        \lastpage%
 
         \end{minipage}
     }
 }
+
+\AtEndDocument{\lastpage}
 
 \RequirePackage[T2A]{fontenc} % package 'fourier' sets T1 encoding
 \endinput
