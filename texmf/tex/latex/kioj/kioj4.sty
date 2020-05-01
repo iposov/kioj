@@ -333,6 +333,11 @@
         \def\journal@type{\@langrev{Компьютерные инструменты в школе}{Computer tools at schools}}%
       }%
     }%
+    \ifthenelse{\equal{cam}{#3}}{%
+        \definecolor{rulercolor}{RGB}{32,63,153}
+    }{%
+        \definecolor{rulercolor}{RGB}{145,56,40}
+    }%
 }
 \def\article@type{}
 \def\articletype#1{\def\article@type{#1}}
@@ -787,8 +792,6 @@
 %------ end headers footers      
 
 %colorize rulers: http://ctan.uni-altai.ru/macros/latex/contrib/fancyhdr/fancyhdr.pdf
-
-\definecolor{rulercolor}{RGB}{32,63,153}
 
 \renewcommand{\headrule}{\fancyplain{}{{\color{rulercolor}%
     \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}}
