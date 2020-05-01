@@ -266,7 +266,7 @@
     \def\authorinfo##1{
         \setstretch{0.9}
         \csname author##1@short\endcsname, \csname author##1@pos\endcsname%
-        \ifcsname author##1@email\endcsname, \ifcsname author##1@email@recepient\endcsname\@Letter\fi\ \href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
+        \ifcsname author##1@email\endcsname, \ifcsname author##1@email@recepient\endcsname\@Letter\fi~\href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
         \ifcsname author##1@orcid\endcsname, \href{http://\csname author##1@orcid\endcsname}{\csname author##1@orcid\endcsname}\fi
     }
     \ifcsname authorI@short\endcsname\authorinfo{I}\par\fi
@@ -347,7 +347,7 @@
 \def\journalsection#1{%
     \def\journal@section@id{#1}
     \ifthenelse{\equal{informatics}{#1}}{%
-        \def\journal@section@name{\@lang{ИНФОРМАТИКА}{INFORMATICS}}%
+        \def\journal@section@name{\@lang{ИНФОРМАТИКА}{COMPUTER SCIENCE}}%
     }{%
     \ifthenelse{\equal{information-systems}{#1}}{%
         \def\journal@section@name{\@lang{ИНФОРМАЦИОННЫЕ СИСТЕМЫ}{INFORMATION SYSTEMS}}%
@@ -681,9 +681,7 @@
 \hrule width\headwidth height\headrulewidth
 \vskip 1pt
 \hrule width\headwidth height\headrulewidth
-}{%
-\print@authors@info%
-}
+}{}
 
 \newcommand\additionalinfo[1]{
 \begin{center}
@@ -790,7 +788,7 @@
 
 %colorize rulers: http://ctan.uni-altai.ru/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 
-\definecolor{rulercolor}{RGB}{145,56,40}
+\definecolor{rulercolor}{RGB}{32,63,153}
 
 \renewcommand{\headrule}{\fancyplain{}{{\color{rulercolor}%
     \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}}
@@ -824,7 +822,7 @@
             \noindent
             \csname author##1@full\endcsname,
             \ifcsname author##1@info\endcsname \csname author##1@info\endcsname\fi,
-            \ifcsname author##1@email\endcsname\ifcsname author##1@email@recepient\endcsname\@Letter\ \fi\href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
+            \ifcsname author##1@email\endcsname\ifcsname author##1@email@recepient\endcsname\@Letter~\fi\href{mailto:\csname author##1@email\endcsname}{\csname author##1@email\endcsname}\fi
         }
 
         \def\allauthorslonginfo{
