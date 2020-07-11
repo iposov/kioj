@@ -1,18 +1,37 @@
 \documentclass[intlimits,twoside,a4paper,11pt]{article}
 
+% these settings specify the language and the file encoding
+
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
-%Здесь порядок языков наоборот! Сначала русский, потом английский
+
 %First russian, the English
 \usepackage[russian,english]{babel}
 
-%Здесь дописана дополнительная опция english
-%Add additional option: "english"
+%The "eqsecnum" option makes formulas have numbering starting from one in each chapter
+%Add additional option: "english" to make this an english paper
+%The "authorsinfo" option makes authors info to be printed after the paper, both in english and in russian version
 \usepackage[eqsecnum,english,authorsinfo]{kioj4}
 
+% set first page
 \setcounter{page}{42}
 
+% let only the first section be uncommented if you don't know the real section
 \journalsectionnoimage{}
+%\journalsection{informatics}
+%\journalsection{information-systems}
+%\journalsection{software-engineering}
+%\journalsection{computer-in-education}
+%\journalsection{popular-science-articles}
+%\journalsection{programming-practice}
+%\journalsection{editorial-column}
+%\journalsection{specialists-training-new-teaching-methods}
+%\journalsection{specialists-training-training-programs}
+%\journalsection{specialists-training-professional-standards}
+%\journalsection{open-problems-for-young-scientists}
+%\journalsection{empty}
+
+% issue year, issue number, journal type: EDU = computer assisted tools in education
 \issue{2015}{-}{edu}
 \udknumber{621.320}
 

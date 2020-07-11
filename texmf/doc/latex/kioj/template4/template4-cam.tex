@@ -5,9 +5,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
 
-%Здесь дописана дополнительная опция english
-%Add additional option: "english"
-\usepackage[eqsecnum,authorsinfo,english]{kioj4}
+% we use the english language
+\usepackage[english]{babel}
+
+%The "eqsecnum" option makes formulas have numbering starting from one in each chapter
+%Add additional option: "english" to make this an english paper
+\usepackage[eqsecnum,english]{kioj4}
 
 % set first page
 \setcounter{page}{42}
@@ -26,7 +29,7 @@
 
 \authorI[Andreev А.~\affil{1,2}]{Andreev Andrew}
 \authorIpos{Ph.D.}
-\authorIemailEnvelope{aaa@org.com}  %emailEnvelope means that this author is a default person to send email to
+\authorIemailEnvelope{aaa@org.com} %emailEnvelope means that this author is a default person to send email to
 \authorIorcid{orcid.org/0000-0002-0261-3113}
 
 \authorII[Borisov B.~\affil{2}]{Borisov Boris}
