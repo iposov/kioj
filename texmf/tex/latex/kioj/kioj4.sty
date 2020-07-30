@@ -616,6 +616,7 @@
 %%  Second Language Part  %%
 
 \newcommand\maketranslatedtitle{
+  \global\let\affil\@affil%
   \begingroup
       \global\@botnum\z@   % Prevents figures from going at bottom of page.
       \@makeukrtitle
@@ -674,7 +675,6 @@
   \lccode`\'=`\'
   \renewcommand{\addr}[1]{\item\label{##1}}
   \long\gdef\make@title[##1]##2{\gdef\fancy@title{##1}\gdef\@title{##2}} % redefine with no-changing header title
-  \let\affil\@affil
   \def\@reverse@lang{}
   \def\affiliation@footnotes{}
 %%
