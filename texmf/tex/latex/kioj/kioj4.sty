@@ -248,14 +248,24 @@
 \def\authorI@short@cont{\@ifundefined{authorII@short}{}{, \authorII@short\authorII@short@cont}}
 \def\authorII@short@cont{\@ifundefined{authorIII@short}{}{, \authorIII@short\authorIII@short@cont}}
 \def\authorIII@short@cont{\@ifundefined{authorIV@short}{}{, \authorIV@short\authorIV@short@cont}}
-\def\authorIV@short@cont{\@ifundefined{authorV@short}{}{, \authorV@short}}
+\def\authorIV@short@cont{\@ifundefined{authorV@short}{}{, \authorV@short\authorV@short@cont}}
+\def\authorV@short@cont{\@ifundefined{authorVI@short}{}{, \authorVI@short\authorVI@short@cont}}
+\def\authorVI@short@cont{\@ifundefined{authorVII@short}{}{, \authorVII@short\authorVII@short@cont}}
+\def\authorVII@short@cont{\@ifundefined{authorVIII@short}{}{, \authorVIII@short\authorVIII@short@cont}}
+\def\authorVIII@short@cont{\@ifundefined{authorIX@short}{}{, \authorIX@short\authorIX@short@cont}}
+\def\authorIX@short@cont{\@ifundefined{authorX@short}{}{, \authorX@short}}
 
 \def\authors@short@split@by@comma{\authorI@short\authorI@short@cont}
 
 \def\authorI@short@first@lang@cont{\@ifundefined{authorII@short@first@lang}{}{, \authorII@short@first@lang\authorII@short@first@lang@cont}}
 \def\authorII@short@first@lang@cont{\@ifundefined{authorIII@short@first@lang}{}{, \authorIII@short@first@lang\authorIII@short@first@lang@cont}}
 \def\authorIII@short@first@lang@cont{\@ifundefined{authorIV@short@first@lang}{}{, \authorIV@short@first@lang\authorIV@short@first@lang@cont}}
-\def\authorIV@short@first@lang@cont{\@ifundefined{authorV@short@first@lang}{}{, \authorV@short@first@lang}}
+\def\authorIV@short@first@lang@cont{\@ifundefined{authorV@short@first@lang}{}{, \authorV@short@first@lang\authorV@short@first@lang@cont}}
+\def\authorV@short@first@lang@cont{\@ifundefined{authorVI@short@first@lang}{}{, \authorVI@short@first@lang\authorVI@short@first@lang@cont}}
+\def\authorVI@short@first@lang@cont{\@ifundefined{authorVII@short@first@lang}{}{, \authorVII@short@first@lang\authorVII@short@first@lang@cont}}
+\def\authorVII@short@first@lang@cont{\@ifundefined{authorVIII@short@first@lang}{}{, \authorVIII@short@first@lang\authorVIII@short@first@lang@cont}}
+\def\authorVIII@short@first@lang@cont{\@ifundefined{authorIX@short@first@lang}{}{, \authorIX@short@first@lang\authorIX@short@first@lang@cont}}
+\def\authorIX@short@first@lang@cont{\@ifundefined{authorX@short@first@lang}{}{, \authorX@short@first@lang}}
 
 \def\authors@short@first@lang@split@by@comma{\authorI@short@first@lang\authorI@short@first@lang@cont}
 
@@ -274,6 +284,11 @@
     \ifcsname authorIII@short\endcsname\authorinfo{III}\par\fi
     \ifcsname authorIV@short\endcsname\authorinfo{IV}\par\fi
     \ifcsname authorV@short\endcsname\authorinfo{V}\par\fi
+    \ifcsname authorVI@short\endcsname\authorinfo{VI}\par\fi
+    \ifcsname authorVII@short\endcsname\authorinfo{VII}\par\fi
+    \ifcsname authorVIII@short\endcsname\authorinfo{VIII}\par\fi
+    \ifcsname authorIX@short\endcsname\authorinfo{IX}\par\fi
+    \ifcsname authorX@short\endcsname\authorinfo{X}\par\fi
 }
 
 %%  Title  %%
@@ -541,41 +556,76 @@
 \def\authorIII{\@dblarg{\def@authorIII}}
 \def\authorIV{\@dblarg{\def@authorIV}}
 \def\authorV{\@dblarg{\def@authorV}}
+\def\authorVI{\@dblarg{\def@authorVI}}
+\def\authorVII{\@dblarg{\def@authorVII}}
+\def\authorVIII{\@dblarg{\def@authorVIII}}
+\def\authorIX{\@dblarg{\def@authorIX}}
+\def\authorX{\@dblarg{\def@authorX}}
 \def\def@authorI[#1]#2{\gdef\authorI@short{#1}\providecommand\authorI@short@first@lang{#1}\gdef\authorI@full{#2}\providecommand\authorI@full@first@lang{#2}}
 \def\def@authorII[#1]#2{\gdef\authorII@short{#1}\providecommand\authorII@short@first@lang{#1}\gdef\authorII@full{#2}\providecommand\authorII@full@first@lang{#2}}
 \def\def@authorIII[#1]#2{\gdef\authorIII@short{#1}\providecommand\authorIII@short@first@lang{#1}\gdef\authorIII@full{#2}\providecommand\authorIII@full@first@lang{#2}}
 \def\def@authorIV[#1]#2{\gdef\authorIV@short{#1}\providecommand\authorIV@short@first@lang{#1}\gdef\authorIV@full{#2}\providecommand\authorIV@full@first@lang{#2}}
 \def\def@authorV[#1]#2{\gdef\authorV@short{#1}\providecommand\authorV@short@first@lang{#1}\gdef\authorV@full{#2}\providecommand\authorV@full@first@lang{#2}}
+\def\def@authorVI[#1]#2{\gdef\authorVI@short{#1}\providecommand\authorVI@short@first@lang{#1}\gdef\authorVI@full{#2}\providecommand\authorVI@full@first@lang{#2}}
+\def\def@authorVII[#1]#2{\gdef\authorVII@short{#1}\providecommand\authorVII@short@first@lang{#1}\gdef\authorVII@full{#2}\providecommand\authorVII@full@first@lang{#2}}
+\def\def@authorVIII[#1]#2{\gdef\authorVIII@short{#1}\providecommand\authorVIII@short@first@lang{#1}\gdef\authorVIII@full{#2}\providecommand\authorVIII@full@first@lang{#2}}
+\def\def@authorIX[#1]#2{\gdef\authorIX@short{#1}\providecommand\authorIX@short@first@lang{#1}\gdef\authorIX@full{#2}\providecommand\authorIX@full@first@lang{#2}}
+\def\def@authorX[#1]#2{\gdef\authorX@short{#1}\providecommand\authorX@short@first@lang{#1}\gdef\authorX@full{#2}\providecommand\authorX@full@first@lang{#2}}
 
 \def\authorIpos#1{\def\authorI@pos{#1}}
 \def\authorIIpos#1{\def\authorII@pos{#1}}
 \def\authorIIIpos#1{\def\authorIII@pos{#1}}
 \def\authorIVpos#1{\def\authorIV@pos{#1}}
 \def\authorVpos#1{\def\authorV@pos{#1}}
+\def\authorVIpos#1{\def\authorVI@pos{#1}}
+\def\authorVIIpos#1{\def\authorVII@pos{#1}}
+\def\authorVIIIpos#1{\def\authorVIII@pos{#1}}
+\def\authorIXpos#1{\def\authorIX@pos{#1}}
+\def\authorXpos#1{\def\authorX@pos{#1}}
 
 \def\authorIinfo#1{\gdef\authorI@info{#1}\providecommand\authorI@info@first@lang{#1}}
 \def\authorIIinfo#1{\gdef\authorII@info{#1}\providecommand\authorII@info@first@lang{#1}}
 \def\authorIIIinfo#1{\gdef\authorIII@info{#1}\providecommand\authorIII@info@first@lang{#1}}
 \def\authorIVinfo#1{\gdef\authorIV@info{#1}\providecommand\authorIV@info@first@lang{#1}}
 \def\authorVinfo#1{\gdef\authorV@info{#1}\providecommand\authorV@info@first@lang{#1}}
+\def\authorVIinfo#1{\gdef\authorVI@info{#1}\providecommand\authorVI@info@first@lang{#1}}
+\def\authorVIIinfo#1{\gdef\authorVII@info{#1}\providecommand\authorVII@info@first@lang{#1}}
+\def\authorVIIIinfo#1{\gdef\authorVIII@info{#1}\providecommand\authorVIII@info@first@lang{#1}}
+\def\authorIXinfo#1{\gdef\authorIX@info{#1}\providecommand\authorIX@info@first@lang{#1}}
+\def\authorXinfo#1{\gdef\authorX@info{#1}\providecommand\authorX@info@first@lang{#1}}
 
 \def\authorIemail#1{\def\authorI@email{#1}}
 \def\authorIIemail#1{\def\authorII@email{#1}}
 \def\authorIIIemail#1{\def\authorIII@email{#1}}
 \def\authorIVemail#1{\def\authorIV@email{#1}}
 \def\authorVemail#1{\def\authorV@email{#1}}
+\def\authorVIemail#1{\def\authorVI@email{#1}}
+\def\authorVIIemail#1{\def\authorVII@email{#1}}
+\def\authorVIIIemail#1{\def\authorVIII@email{#1}}
+\def\authorIXemail#1{\def\authorIX@email{#1}}
+\def\authorXemail#1{\def\authorX@email{#1}}
 
 \def\authorIemailEnvelope#1{\authorIemail{#1}\def\authorI@email@recepient{}}
 \def\authorIIemailEnvelope#1{\authorIIemail{#1}\def\authorII@email@recepient{}}
 \def\authorIIIemailEnvelope#1{\authorIIIemail{#1}\def\authorIII@email@recepient{}}
 \def\authorIVemailEnvelope#1{\authorIVemail{#1}\def\authorIV@email@recepient{}}
 \def\authorVemailEnvelope#1{\authorVemail{#1}\def\authorV@email@recepient{}}
+\def\authorVIemailEnvelope#1{\authorVIemail{#1}\def\authorVI@email@recepient{}}
+\def\authorVIIemailEnvelope#1{\authorVIIemail{#1}\def\authorVII@email@recepient{}}
+\def\authorVIIIemailEnvelope#1{\authorVIIIemail{#1}\def\authorVIII@email@recepient{}}
+\def\authorIXemailEnvelope#1{\authorIXemail{#1}\def\authorIX@email@recepient{}}
+\def\authorXemailEnvelope#1{\authorXemail{#1}\def\authorX@email@recepient{}}
 
 \def\authorIorcid#1{\def\authorI@orcid{#1}}
 \def\authorIIorcid#1{\def\authorII@orcid{#1}}
 \def\authorIIIorcid#1{\def\authorIII@orcid{#1}}
 \def\authorIVorcid#1{\def\authorIV@orcid{#1}}
 \def\authorVorcid#1{\def\authorV@orcid{#1}}
+\def\authorVIorcid#1{\def\authorVI@orcid{#1}}
+\def\authorVIIorcid#1{\def\authorVII@orcid{#1}}
+\def\authorVIIIorcid#1{\def\authorVIII@orcid{#1}}
+\def\authorIXorcid#1{\def\authorIX@orcid{#1}}
+\def\authorXorcid#1{\def\authorX@orcid{#1}}
 
 \def\address#1{\gdef\@address{#1}}
 \def\addresses#1{\gdef\@address{%
@@ -834,6 +884,11 @@
             \ifcsname authorIII@short\endcsname\vskip 2mm\authorlonginfo{III}\par\fi
             \ifcsname authorIV@short\endcsname\vskip 2mm\authorlonginfo{IV}\par\fi
             \ifcsname authorV@short\endcsname\vskip 2mm\authorlonginfo{V}\par\fi
+            \ifcsname authorVI@short\endcsname\vskip 2mm\authorlonginfo{VI}\par\fi
+            \ifcsname authorVII@short\endcsname\vskip 2mm\authorlonginfo{VII}\par\fi
+            \ifcsname authorVIII@short\endcsname\vskip 2mm\authorlonginfo{VIII}\par\fi
+            \ifcsname authorIX@short\endcsname\vskip 2mm\authorlonginfo{IX}\par\fi
+            \ifcsname authorX@short\endcsname\vskip 2mm\authorlonginfo{X}\par\fi
         }
 
         \allauthorslonginfo
