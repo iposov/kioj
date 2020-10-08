@@ -666,13 +666,11 @@
 %%  Second Language Part  %%
 
 \newcommand\maketranslatedtitle{
-  \global\let\affil\@affil%
   \begingroup
       \global\@botnum\z@   % Prevents figures from going at bottom of page.
       \@makeukrtitle
     \@thanks
   \endgroup
-  \global\let\affil\relax@with@arg%
   \global\let\thanks\relax
   \global\let\makeukrtitle\relax
   \global\let\@makeukrtitle\relax
@@ -703,15 +701,18 @@
   \centering
   \let \footnote \thanks
   \@ifundefined{@title}{}{\print@ukrtitle}%
+  \global\let\affil\@affil%
   \@ifundefined{@author}{}{\print@author}%
   \@ifundefined{@address}{}{\print@address}%
   \affiliation@footnotes
+  \global\let\affil\relax@with@arg%
 %  {\Large \hv@sf \bfseries\upshape \@title \par}%
 %    \vskip 1em%
 %    {\normalsize\hv@sf\upshape \@date}%
   %}%end of \parbox
   \par
-  \vskip 1.5em}
+  \vskip 1.5em%
+}
 
 \newenvironment{translatedpart}{%
   \def\@has@translated@part{}
