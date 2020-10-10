@@ -47,7 +47,7 @@
 
 %do not forget to install droid, fourier, and txfonts fonts before usage
 
-% \RequirePackage{cmap} % pdf copy\paste + search package
+\RequirePackage{cmap} % pdf copy\paste + search package
 
 % ========== Options ==============
 
@@ -84,16 +84,18 @@
 }
 
 \def\cmpj@sf@droid{
-  \IfFileExists{t2afds.fd}{
-    \IfFileExists{omltxmi.fd}{\RequirePackage{txfonts}}{}
-    \IfFileExists{fmlfutm.fd}{\RequirePackage{fourier}}{}
-    \IfFileExists{omltxmi.fd}{\re@DeclareMathSymbol{\varkappa}{\mathord}{AMSb}{123}}{}
-    \RequirePackage[default,scale=0.86]{droidserif}
-    \RequirePackage[defaultsans,scale=0.86]{droidsans}
-    \RequirePackage[defaultmono,scale=0.86]{droidmono}
-    \def\lat@sf{fds}
-    \def\cyr@sf{fds}
-  }{\PackageWarning{kioj4.sty}{Failed to use droid fonts}\cmpj@sf@helvet}
+%  \IfFileExists{t2afds.fd}{
+%    \IfFileExists{omltxmi.fd}{\RequirePackage{txfonts}}{}
+%    \IfFileExists{fmlfutm.fd}{\RequirePackage{fourier}}{}
+\RequirePackage{txfonts}
+\RequirePackage{fourier}
+\IfFileExists{omltxmi.fd}{\re@DeclareMathSymbol{\varkappa}{\mathord}{AMSb}{123}}{}
+\RequirePackage[default,scale=0.86]{droidserif}
+\RequirePackage[defaultsans,scale=0.86]{droidsans}
+\RequirePackage[defaultmono,scale=0.86]{droidsansmono}
+\def\lat@sf{droidsans}
+\def\cyr@sf{droidsans}
+%  }{\PackageWarning{kioj4.sty}{Failed to use droid fonts}\cmpj@sf@helvet}
 }
 
 \DeclareOption{droid}{\let\cmpj@sf\cmpj@sf@droid}
@@ -157,6 +159,7 @@
 \RequirePackage[tableposition=top,labelfont={bf,sf,small},font=small,skip=4mm,labelsep=period]{caption}
 \RequirePackage{subcaption}
 \RequirePackage[misc]{ifsym}
+\RequirePackage{microtype}
 
 \@lang{
   \renewcommand\thesubfigure{\asbuk{subfigure}}
@@ -268,6 +271,12 @@
 \def\authorIX@short@first@lang@cont{\@ifundefined{authorX@short@first@lang}{}{, \authorX@short@first@lang}}
 
 \def\authors@short@first@lang@split@by@comma{\authorI@short@first@lang\authorI@short@first@lang@cont}
+\def\authors@short@first@lang@split@by@comma@remove@affil{%
+\global\let\@@affil\affil%
+\global\let\affil\relax@with@arg%
+\authors@short@first@lang@split@by@comma%
+\global\let\affil\@@affil%
+}
 
 \def\@Letter{{\footnotesize \Letter}}
 
@@ -828,7 +837,7 @@
 \chead[\@curlang]{\@curlang}
 \cfoot[\@curlang]{\@curlang}
 
-\lhead[\fancyplain{}{\small\sf@phv\def\refaddr##1{}\textcolor{rulercolor}{\mbox\authors@short@first@lang@split@by@comma}}]{}
+\lhead[\fancyplain{}{\small\sf@phv\def\refaddr##1{}\textcolor{rulercolor}{\mbox\authors@short@first@lang@split@by@comma@remove@affil}}]{}
 
 \rhead[]{\fancyplain{}{\small\sf@phv\textcolor{rulercolor}{\fancy@header@title}}} % \fancy@header@title это всегда название на основном языке
 
