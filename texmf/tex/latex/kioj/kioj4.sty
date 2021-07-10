@@ -158,7 +158,7 @@
 \RequirePackage{float}
 \RequirePackage[tableposition=top,labelfont={bf,sf,small},font=small,skip=4mm,labelsep=period]{caption}
 \RequirePackage{subcaption}
-\RequirePackage[misc]{ifsym}
+\RequirePackage[misc]{ifsym}  % TODO needed only for the \Letter symbol, don't load this package if it is not installed
 \RequirePackage{microtype}
 
 \@lang{
@@ -278,7 +278,7 @@
 \global\let\affil\@@affil%
 }
 
-\def\@Letter{{\footnotesize \Letter}}
+\def\@Letter{{\footnotesize \Letter}}  % TODO symbol should depend on whether ifsym package is loaded
 
 %% Authors information
 \def\authors@all@info{%
