@@ -59,6 +59,8 @@
 
 \DeclareOption{eqsecnum}{\eqsecnum}
 
+\DeclareOption{noimages}{\def\@noimages{}}
+
 % font options
 
 \def\kio@sf{cmss}
@@ -147,6 +149,7 @@
 }
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
+\@ifundefined{@noimages}{}{\renewcommand{\includegraphics}[2][]{\fbox{\detokenize{#2}}}}  % TODO use width, height from graphics specification
 \RequirePackage[square,comma,numbers,sort&compress]{natbib}
 \RequirePackage{ifthen}
 \RequirePackage{textcase}
