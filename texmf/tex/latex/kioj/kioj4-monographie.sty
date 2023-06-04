@@ -698,7 +698,8 @@
 
 %colorize rulers: http://ctan.uni-altai.ru/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 
-\renewcommand{\headrule}{}
+\renewcommand{\headrule}{\fancyplain{}{{\color{rulercolor}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}}
 
 \renewcommand{\footrule}{}
 
