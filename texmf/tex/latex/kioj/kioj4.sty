@@ -420,6 +420,9 @@
     \ifthenelse{\equal{new-section}{#1}}{%
         \def\journal@section@name{\@lang{НОВЫЙ РАЗДЕЛ}{A NEW SECTION}}%
     }{%
+    \ifthenelse{\equal{artificial-intelligence}{#1}}{%
+        \def\journal@section@name{\@lang{ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ И МАШИННОЕ ОБУЧЕНИЕ}{ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING}}%
+    }{%
     \ifthenelse{\equal{empty}{#1}}{%
         \def\journal@section@name{}%
         \def\journal@section@img{}%
@@ -431,6 +434,7 @@
         \renewcommand{\footrule}{}
     }{%
         \def\journal@section@name{\@lang{раздел не указан или неизвестен}{section not specified or unknown} #1}%
+    }%
     }%
     }%
     }%
